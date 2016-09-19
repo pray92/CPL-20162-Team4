@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="소스 파일">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="헤더 파일">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="리소스 파일">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="01. MainApp">
+      <UniqueIdentifier>{171e2e54-d70b-44d0-b648-992377f3d32d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\Headers">
+      <UniqueIdentifier>{4a4222f8-0b11-4496-ae71-f99e34f02e8c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Scene">
+      <UniqueIdentifier>{60aecb15-cf76-4b36-af5c-183ce23c3979}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03. Manager">
+      <UniqueIdentifier>{d2c915ed-12d2-4c87-8a98-772d5c2fa04f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Scene\Movie">
+      <UniqueIdentifier>{42f94efd-0d0a-4dd4-875f-7c6733aad9fa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Scene\Menu">
+      <UniqueIdentifier>{614b640e-08cf-45f8-9167-0f7fdb440030}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03. Manager\SceneMgr">
+      <UniqueIdentifier>{4e5b1076-f53e-44da-a272-b36a52505e30}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03. Manager\TextureMgr">
+      <UniqueIdentifier>{a320bafd-9ff9-432b-a327-b706e71420c6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03. Manager\TextureMgr\Texture">
+      <UniqueIdentifier>{d27a2bbc-4bb0-4cb5-867f-501c9f3c44b4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03. Manager\TextureMgr\Texture\Single">
+      <UniqueIdentifier>{a729a008-54bc-4226-9cdf-3b51deacf144}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03. Manager\TextureMgr\Texture\Multi">
+      <UniqueIdentifier>{6510e317-6bbb-45b5-9867-773d8166ce32}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Practice.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="MainApp.h">
+      <Filter>01. MainApp</Filter>
+    </ClInclude>
+    <ClInclude Include="Define.h">
+      <Filter>헤더 파일\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Constant.h">
+      <Filter>헤더 파일\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Enum.h">
+      <Filter>헤더 파일\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Macro.h">
+      <Filter>헤더 파일\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>02. Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Movie.h">
+      <Filter>02. Scene\Movie</Filter>
+    </ClInclude>
+    <ClInclude Include="SettingMenu.h">
+      <Filter>02. Scene\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneMgr.h">
+      <Filter>03. Manager\SceneMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="MultiTexture.h">
+      <Filter>03. Manager\TextureMgr\Texture\Multi</Filter>
+    </ClInclude>
+    <ClInclude Include="SingleTexture.h">
+      <Filter>03. Manager\TextureMgr\Texture\Single</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureMgr.h">
+      <Filter>03. Manager\TextureMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="Texture.h">
+      <Filter>03. Manager\TextureMgr\Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="Struct.h">
+      <Filter>헤더 파일\Headers</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Practice.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="MainApp.cpp">
+      <Filter>01. MainApp</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>02. Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Movie.cpp">
+      <Filter>02. Scene\Movie</Filter>
+    </ClCompile>
+    <ClCompile Include="SettingMenu.cpp">
+      <Filter>02. Scene\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneMgr.cpp">
+      <Filter>03. Manager\SceneMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="MultiTexture.cpp">
+      <Filter>03. Manager\TextureMgr\Texture\Multi</Filter>
+    </ClCompile>
+    <ClCompile Include="SingleTexture.cpp">
+      <Filter>03. Manager\TextureMgr\Texture\Single</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureMgr.cpp">
+      <Filter>03. Manager\TextureMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="Texture.cpp">
+      <Filter>03. Manager\TextureMgr\Texture</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Practice.rc">
+      <Filter>리소스 파일</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="small.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Practice.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+  </ItemGroup>
+</Project>

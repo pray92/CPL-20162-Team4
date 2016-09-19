@@ -1,0 +1,21 @@
+#pragma once
+
+typedef enum eScene
+{
+	SCENE_NONPASS,
+	SCENE_MENU,
+	SCENE_MOVIE,
+	SCENE_END,
+}SCENE;
+
+enum TEXTTYPE
+{
+	TEXTTYPE_SINGLE,
+	TEXTTYPE_MULTI,
+};
+
+enum WINMODE
+{
+	WINMODE_FULL,
+	WINMODE_WIN,
+};
