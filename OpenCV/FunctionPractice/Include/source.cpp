@@ -2,12 +2,13 @@
 
 int main()
 {
+	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 	//GET_SINGLE(CExample)->WebCam();
 	//GET_SINGLE(CExample)->Video();
-	//GET_SINGLE(CExample)->Image();
-	GET_SINGLE(CExample)->FaceDetection();
-
+	GET_SINGLE(CExample)->Image();
+	//GET_SINGLE(CExample)->FaceDetection();
 	SAFE_DELETE_SINGLE(CExample);
+
 	return 0;
 }
 

@@ -1,6 +1,7 @@
 #include "source.h"
 #include "Example.h"
 
+
 void CExample::FaceDetection()
 {
 	cvNamedWindow("Face Detection");
@@ -84,14 +85,45 @@ void CExample::WebCam()
 
 void CExample::Image()
 {
-	IplImage *image = cvLoadImage("Title.png");
+	//cv::Mat srcImage = cv::imread("Pikachu.png", CV_LOAD_IMAGE_COLOR);
+	cv::CascadeClassifier face_cascade;
+	if (!face_cascade.load("haarcascade_frontalface_alt2.xml"))
+	{
+		std::cerr << "Fail to load face cascade" << std::endl;
+		return;
+	}
+	cv::CascadeClassifier eye_cascade;
+	if (!eye_cascade.load("haarcascade_eye.xml"))
+	{
+		std::cerr << "Fail to load eye cascade" << std::endl;
+		return;
+	}
 
-	cvNamedWindow("Test", 1);
-	cvShowImage("Test", image);
-	cvWaitKey(0);
+	cv::Mat Frame, GrayFrame;
 
-	cvReleaseImage(&image);
-	cvDestroyWindow("Test");
+	Frame = cv::imread("10.jpg", CV_LOAD_IMAGE_COLOR);
+
+	cv::cvtColor(Frame, GrayFrame, CV_BGR2GRAY);
+	cv::equalizeHist(GrayFrame, GrayFrame);
+
+	face_cascade.detectMultiScale(GrayFrame, *faces, 1.1, 2, 0 | CV_HAAR_SCALE_IMAGE, cv::Size(30, 30));
+	for (size_t i = 0; i < (*faces).size(); ++i)
+	{
+		rectangle(Frame, (*faces)[i], cv::Scalar(255, 255, 255));
+
+		cv::Mat faceROI = GrayFrame((*faces)[i]);
+		eye_cascade.detectMultiScale(faceROI, *eyes, 1.1, 2, 0 | CV_HAAR_SCALE_IMAGE, cv::Size(30, 30));
+		for (size_t j = 0; j < (*eyes).size(); ++j)
+		{
+			cv::Point center((*faces)[i].x + (*eyes)[j].x + (*eyes)[j].width*0.5, (*faces)[i].y + (*eyes)[j].y + (*eyes)[j].height*0.5);
+			int radius = cvRound(((*eyes)[j].width + (*eyes)[j].height)*0.25);
+			cv::circle(Frame, center, radius, cv::Scalar(255, 0, 0), 4, 8, 0);
+		}
+	}
+
+	cv::imshow("Face detection", Frame);
+	cv::waitKey(0);
+
 }
 
 void CExample::Video()
@@ -121,9 +153,13 @@ void CExample::Video()
 
 CExample::CExample()
 {
+	eyes = new std::vector<cv::Rect>;
+	faces = new std::vector<cv::Rect>;
 }
 
 
 CExample::~CExample()
 {
+	(*faces).clear();
+	(*eyes).clear();
 }
