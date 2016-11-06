@@ -1,5 +1,0 @@
-﻿  main.cpp
-c:\programming\sysprog\imageexport\imgexport\main.cpp(53): warning C4129: 'i': 문자 이스케이프 시퀀스를 인식할 수 없습니다.
-c:\programming\sysprog\imageexport\imgexport\main.cpp(64): warning C4129: 'i': 문자 이스케이프 시퀀스를 인식할 수 없습니다.
-c:\programming\sysprog\imageexport\imgexport\main.cpp(31): warning C4101: 'capture' :참조되지 않은 지역 변수입니다.
-  imgExport.vcxproj -> C:\Programming\SysProg\imageExport\Debug\imgExport.exe
