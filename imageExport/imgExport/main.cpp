@@ -9,10 +9,10 @@
 #include "dirent.h"
 #include <stdlib.h>
 
+#include <math.h>
+
 using namespace std;
 using namespace cv;
-
-
 
 //전역변수
 String face_cascade_name = "haarcascade_frontalface_default.xml";
@@ -84,7 +84,7 @@ int main(int argc, const char** argv)
 			rectangle(img, face_pos[k], Scalar(0, 255, 0), 2);
 			}*/
 
-
+#if 0
 			//자른 얼굴 시작점 추출
 			newImage = cv::Mat::zeros(cv::Size(face_pos[0].width, face_pos[0].height), img.type());
 
@@ -93,7 +93,43 @@ int main(int argc, const char** argv)
 					newImage.at<Vec3b>(j, i) = img.at<Vec3b>(face_pos[0].y + j, face_pos[0].x + i);
 				}
 			}
-			String savename =  "export\\" + to_string(i) + "saved.jpg";
+			
+#endif
+
+			/* --- Cropping facial area with Rect --- */
+#if 0
+			// Set rectangle position x, y and width, height to cropping
+			Rect rect(face_pos[0].x, face_pos[0].y, face_pos[0].width, face_pos[0].height); 
+
+			// Cropping rectangle facial area with rect()
+			newImage = img(rect); 
+#endif
+
+			/* --- Circular face extraction --- */
+#if 1
+			newImage = cv::Mat::zeros(cv::Size(face_pos[0].width, face_pos[0].height), img.type());
+
+			int face_radius = (int)(face_pos[0].width / 2); // Radius of circular facial area
+			int d;											// Length between middle of the face & at<Vec3b>(j, i)
+
+			for (int i = 0; i < face_pos[0].width; i++) {
+				for (int j = 0; j < face_pos[0].height; j++) {
+					d = sqrt(pow((int)(face_pos[0].width / 2) - i, 2) + pow((int)(face_pos[0].height / 2) - j, 2));
+
+					// Check each point
+					if(d > face_radius)	{
+						// Out of the circle
+						newImage.at<Vec3b>(j, i) = (0, 0, 0);
+					}
+					else {
+						// Point is included in circle
+						newImage.at<Vec3b>(j, i) = img.at<Vec3b>(face_pos[0].y + j, face_pos[0].x + i);
+					}
+				}
+			}
+#endif
+
+			String savename = "export\\" + to_string(i) + "saved.jpg";
 
 			//현재 파일 위치에 저장
 			imwrite(savename, newImage);
