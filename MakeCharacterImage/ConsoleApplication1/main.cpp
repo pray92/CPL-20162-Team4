@@ -3,6 +3,10 @@
 #include <cstring>
 #include <Windows.h>
 
+#include<new>
+
+using namespace std;
+
 #include "opencv2\opencv.hpp"
 #include "opencv2\highgui\highgui.hpp"
 #include "dirent.h"
@@ -46,9 +50,9 @@ void on_mouse(int event, int x, int y, int flag, void*params) {
 
 
 int main(void) {
-	
+
 	cv::namedWindow("image");
-	img2 = cv::imread("Character\\CharacterImage.jpg");
+	img2 = cv::imread("Character\\turtle.png");
 
 	cv::setMouseCallback("image", on_mouse);
 
@@ -91,9 +95,11 @@ int main(void) {
 			for (int i = lupoint_x; i < rdpoint_x; i++, m++) {
 				k = 0;
 				for (int j = lupoint_y; j < rdpoint_y; j++, k++) {
-					d = sqrt(pow((int)(width / 2) - (i-lupoint_x), 2) + pow((int)(hei / 2) - (j-lupoint_y), 2));
+					d = sqrt(pow((int)(width / 2) - (i - lupoint_x), 2) + pow((int)(hei / 2) - (j - lupoint_y), 2));
 					if (d < face_radius) {
-						gMatChangeImage.at<cv::Vec3b>(j, i) = img.at<cv::Vec3b>(k, m);
+						gMatChangeImage.at<cv::Vec3b>(j, i)[0] = img2.at<cv::Vec3b>(j, i)[0] * (1.0f - (face_radius - d) * 0.01f) + img.at<cv::Vec3b>(k, m)[0] * (face_radius - d) * 0.01f;
+						gMatChangeImage.at<cv::Vec3b>(j, i)[1] = img2.at<cv::Vec3b>(j, i)[1] * (1.0f - (face_radius - d) * 0.01f) + img.at<cv::Vec3b>(k, m)[1] * (face_radius - d) * 0.01f;
+						gMatChangeImage.at<cv::Vec3b>(j, i)[2] = img2.at<cv::Vec3b>(j, i)[2] * (1.0f - (face_radius - d) * 0.01f) + img.at<cv::Vec3b>(k, m)[2] * (face_radius - d) * 0.01f;
 					}
 				}
 			}
@@ -103,4 +109,5 @@ int main(void) {
 		}
 	}
 	cv::waitKey(0);
+	cv::destroyAllWindows();
 }

@@ -36,6 +36,10 @@ int main(int argc, const char** argv)
 	Mat img; //사진파일 이미지
 	Mat gray; //흑백 변환
 
+
+	
+
+
 	//-- load cascade
 	if (!face_cascade.load(face_cascade_name)) {
 		printf("--(!)Error loading face cascade\n");
@@ -119,11 +123,50 @@ int main(int argc, const char** argv)
 					// Check each point
 					if(d > face_radius)	{
 						// Out of the circle
-						newImage.at<Vec3b>(j, i) = (0, 0, 0);
+						newImage.at<Vec3b>(j, i)[0] = 255;
+						newImage.at<Vec3b>(j, i)[1] = 255;
+						newImage.at<Vec3b>(j, i)[2] = 255;
 					}
 					else {
 						// Point is included in circle
 						newImage.at<Vec3b>(j, i) = img.at<Vec3b>((*face_pos)[0].y + j, (*face_pos)[0].x + i);
+
+						//lch
+						Mat bg = Mat(img.size(), CV_32FC3);
+						bg = Scalar(1.0, 1.0, 1.0);
+
+
+						//prepare mask
+						Mat mask; // 가장자리
+						Mat img_gray;
+
+						cv::cvtColor(img, img_gray, cv::COLOR_BGR2GRAY);
+						img_gray.convertTo(mask, CV_32FC1);
+						threshold(1.0 - mask, mask, 0.9, 1.0, cv::THRESH_BINARY);
+
+						cv::GaussianBlur(mask, mask, Size(21, 21), 11, 0);
+						imshow("result", mask);
+						cv::waitKey(0);
+
+
+						Mat res;
+
+						vector<Mat> ch_img(3);
+						vector<Mat> ch_bg(3);
+						cv::split(img, ch_img);
+						cv::split(bg, ch_bg);
+
+						ch_img[0] = ch_img[0].mul(mask) + ch_bg[0].mul(1.0 - mask);
+						ch_img[1] = ch_img[1].mul(mask) + ch_bg[1].mul(1.0 - mask);
+						ch_img[2] = ch_img[2].mul(mask) + ch_bg[2].mul(1.0 - mask);
+						cv::merge(ch_img, res);
+						cv::merge(ch_bg, bg);
+
+						imshow("result", res);
+						cv::waitKey(0);
+
+
+						
 					}
 				}
 			}
