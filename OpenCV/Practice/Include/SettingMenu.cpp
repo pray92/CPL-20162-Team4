@@ -1,6 +1,11 @@
 #include "stdafx.h"
 #include "SettingMenu.h"
 
+#include "Character.h"
+
+#include "TextureMgr.h"
+#include "ObjMgr.h"
+
 #include "SystemFunc.h"
 
 HRESULT CSettingMenu::Initialize(void)
@@ -11,28 +16,34 @@ HRESULT CSettingMenu::Initialize(void)
 		return E_FAIL;
 	}
 
-	MSGBOX(L"Menu Scene");
+	m_dwTime = GetTickCount();
 
 	return S_OK;
 }
 
 SCENE CSettingMenu::Progress(void)
 {
-	if (GetAsyncKeyState(VK_LBUTTON) & 0x8000)
+	if (GetTickCount() > m_dwTime + 1000)
 	{
-		ReleaseDevice();
-		return SCENE_MOVIE;
+		shared_ptr<CCharacter> character(new CCharacter);
+		GET_SINGLE(CObjMgr)->InsertObject(character);
+		m_dwTime = GetTickCount();
 	}
 
-	return SCENE_NONPASS;
+	return GET_SINGLE(CObjMgr)->Progress();
 }
 
 void CSettingMenu::Render(void)
 {
+	Render_Begin();
+	GET_SINGLE(CObjMgr)->Render();
+	Render_End();
 }
 
 void CSettingMenu::Release(void)
 {
+	SAFE_DELETE_SINGLE(CTextureMgr);
+	SAFE_DELETE_SINGLE(CObjMgr);
 }
 
 CSettingMenu::CSettingMenu()

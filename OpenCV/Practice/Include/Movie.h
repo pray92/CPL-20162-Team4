@@ -4,8 +4,6 @@
 class CMovie :
 	public CScene
 {
-private:
-	IplImage*	image;
 public:
 	virtual HRESULT Initialize(void);
 	virtual SCENE Progress(void);

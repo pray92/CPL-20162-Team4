@@ -15,7 +15,7 @@ CTextureMgr::~CTextureMgr(void)
 	Release();
 }
 
-const HRESULT CTextureMgr::InsertTexture(const int iAlpha, const int iRed,const int iGreen,const int iBlue, const TCHAR* pFileName, const TCHAR* pObjKey,TEXTTYPE TypeID,const TCHAR* pStateKey, const int& iCnt /*=0*/)
+const HRESULT CTextureMgr::InsertTexture(const int iAlpha, const int iRed,const int iGreen,const int iBlue, const TCHAR* pFileName, const TCHAR* pObjKey,TEXT_TYPE TypeID,const TCHAR* pStateKey, const int& iCnt /*=0*/)
 {
 	map<const TCHAR*, CTexture*>::iterator iter = m_MapTexture.find(pObjKey);
 
@@ -32,7 +32,7 @@ const HRESULT CTextureMgr::InsertTexture(const int iAlpha, const int iRed,const 
 			break;
 		}
 
-		if(FAILED(pTexture->InsertTexture(iAlpha, iRed, iGreen, iBlue, pFileName,pStateKey,iCnt)))
+		if(FAILED(pTexture->InsertTexture(iAlpha, iRed, iGreen, iBlue, pFileName, pStateKey, iCnt)))
 			return E_FAIL;
 
 		m_MapTexture.insert(make_pair(pObjKey,pTexture));
@@ -43,7 +43,7 @@ const HRESULT CTextureMgr::InsertTexture(const int iAlpha, const int iRed,const 
 	return S_OK;
 }
 
-const TEXINFO* CTextureMgr::GetTexture( const TCHAR* pObjKey, const TCHAR* pStateKey /*= NULL*/, const int& iCnt /*=0*/ )
+const TEX_INFO* CTextureMgr::GetTexture( const TCHAR* pObjKey, const TCHAR* pStateKey /*= NULL*/, const int& iCnt /*=0*/ )
 {
 	map<const TCHAR*, CTexture*>::iterator iter = m_MapTexture.find(pObjKey);
 

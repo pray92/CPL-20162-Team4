@@ -1,7 +1,6 @@
-#include "StdAfx.h"
+#include "stdafx.h"
 #include "SingleTexture.h"
 
-#include "Define.h"
 #include "SystemFunc.h"
 
 CSingleTexture::CSingleTexture(void)
@@ -15,15 +14,15 @@ CSingleTexture::~CSingleTexture(void)
 	Release();
 }
 
-const TEXINFO* CSingleTexture::GetTexture( const TCHAR* pStateKey /*= NULL*/,const int& iCnt /*=0*/ )
+const TEX_INFO* CSingleTexture::GetTexture( const TCHAR* pStateKey /*= NULL*/,const int& iCnt /*=0*/ )
 {
 	return m_pTexInfo;
 }
 
 const HRESULT CSingleTexture::InsertTexture( const int iAlpha, const int iRed,const int iGreen,const int iBlue, const TCHAR* pFileName,const TCHAR* pStateKey /*= NULL*/,const int& iCnt /*=0*/)
 {
-	m_pTexInfo = new TEXINFO;
-	ZeroMemory(m_pTexInfo,sizeof(TEXINFO));
+	m_pTexInfo = new TEX_INFO;
+	ZeroMemory(m_pTexInfo,sizeof(TEX_INFO));
 
 	if (FAILED(D3DXGetImageInfoFromFile(pFileName,&m_pTexInfo->ImgInfo)))
 	{

@@ -1,7 +1,6 @@
-#include "StdAfx.h"
+#include "stdafx.h"
 #include "MultiTexture.h"
 
-#include "Define.h"
 #include "SystemFunc.h"
 
 
@@ -15,9 +14,9 @@ CMultiTexture::~CMultiTexture(void)
 	Release();
 }
 
-const TEXINFO* CMultiTexture::GetTexture( const TCHAR* pStateKey /*= NULL*/,const int& iCnt /*=0*/ )
+const TEX_INFO* CMultiTexture::GetTexture( const TCHAR* pStateKey /*= NULL*/,const int& iCnt /*=0*/ )
 {
-	map<const TCHAR*,vector<TEXINFO*>>::iterator iter = m_pMapTexture.find(pStateKey);
+	map<const TCHAR*,vector<TEX_INFO*>>::iterator iter = m_pMapTexture.find(pStateKey);
 
 	if(iter == m_pMapTexture.end())
 		return NULL;
@@ -28,13 +27,13 @@ const TEXINFO* CMultiTexture::GetTexture( const TCHAR* pStateKey /*= NULL*/,cons
 const HRESULT CMultiTexture::InsertTexture(const int iAlpha, const int iRed,const int iGreen,const int iBlue, const TCHAR* pFileName,const TCHAR* pStateKey /*= NULL*/,const int& iCnt /*=0*/)
 {
 	TCHAR	szPath[128] = L"";
-	vector<TEXINFO*>	vecTexture;
+	vector<TEX_INFO*>	vecTexture;
 
 	for(int i = 0 ; i < iCnt; ++i)
 	{
 		wsprintf(szPath,pFileName,i);
-		TEXINFO* pTexInfo = new TEXINFO;
-		ZeroMemory(pTexInfo,sizeof(TEXINFO));
+		TEX_INFO* pTexInfo = new TEX_INFO;
+		ZeroMemory(pTexInfo,sizeof(TEX_INFO));
 
 		if (FAILED(D3DXGetImageInfoFromFile(szPath,&pTexInfo->ImgInfo)))
 		{
@@ -63,7 +62,7 @@ const HRESULT CMultiTexture::InsertTexture(const int iAlpha, const int iRed,cons
 void CMultiTexture::Release( void )
 {
 	
-	for(map<const TCHAR*,vector<TEXINFO*>>::iterator iter = m_pMapTexture.begin();
+	for(map<const TCHAR*,vector<TEX_INFO*>>::iterator iter = m_pMapTexture.begin();
 		iter != m_pMapTexture.end(); ++iter)
 	{
 		for (size_t i=0; i< iter->second.size();++i )

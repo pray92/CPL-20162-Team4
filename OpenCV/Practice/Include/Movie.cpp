@@ -11,29 +11,16 @@ HRESULT CMovie::Initialize(void)
 		return E_FAIL;
 	}
 
-	MSGBOX(L"Movie Scene");
-
-	image = cvLoadImage("t9t9.jpg", 1);
-
 	return S_OK;
 }
 
 SCENE CMovie::Progress(void)
 {
-	if (GetAsyncKeyState(VK_LBUTTON) & 0x8000)
-	{
-		ReleaseDevice();
-		return SCENE_MENU;
-	}
-	
 	return SCENE_NONPASS;
 }
 
 void CMovie::Render(void)
 {
-	cvNamedWindow("T9-viewer", 1);
-	cvShowImage("T9-viewer", image);
-	cvWaitKey(0);
 }
 
 void CMovie::Release(void)

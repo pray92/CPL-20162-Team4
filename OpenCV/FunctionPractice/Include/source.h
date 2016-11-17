@@ -1,17 +1,11 @@
 #pragma once
-#include <cv.h>										//영상 처리를 위한 header
-#include <highgui.h>								//카메라로 영상을 입력받거나
-													//이미지를 읽어들이고 화면에 보여주기 위한 header
+
 #ifndef _DEBUG
 #define new new(_CLIENT_BLOCK,__FILE__,__LINE)
 #endif
 #include<stdio.h>
 #include<crtdbg.h>
-#include<cxcore.h>
 
-#include<opencv2/imgproc/imgproc.hpp>
-#include<opencv2/core/core.hpp>
-#include<opencv2/highgui/highgui.hpp>
 
 #include<vector>
 

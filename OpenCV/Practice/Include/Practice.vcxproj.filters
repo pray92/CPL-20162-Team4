@@ -46,6 +46,12 @@
     <Filter Include="03. Manager\TextureMgr\Texture\Multi">
       <UniqueIdentifier>{6510e317-6bbb-45b5-9867-773d8166ce32}</UniqueIdentifier>
     </Filter>
+    <Filter Include="04. Character">
+      <UniqueIdentifier>{e302d3ad-143f-4f7c-a8a1-09e9334a8f8d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03. Manager\ObjMgr">
+      <UniqueIdentifier>{87feefa5-6a1b-4cff-bf42-8b75d2aa9c51}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -66,18 +72,6 @@
     <ClInclude Include="MainApp.h">
       <Filter>01. MainApp</Filter>
     </ClInclude>
-    <ClInclude Include="Define.h">
-      <Filter>헤더 파일\Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="Constant.h">
-      <Filter>헤더 파일\Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="Enum.h">
-      <Filter>헤더 파일\Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="Macro.h">
-      <Filter>헤더 파일\Headers</Filter>
-    </ClInclude>
     <ClInclude Include="Scene.h">
       <Filter>02. Scene</Filter>
     </ClInclude>
@@ -90,20 +84,38 @@
     <ClInclude Include="SceneMgr.h">
       <Filter>03. Manager\SceneMgr</Filter>
     </ClInclude>
+    <ClInclude Include="Character.h">
+      <Filter>04. Character</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureMgr.h">
+      <Filter>03. Manager\TextureMgr</Filter>
+    </ClInclude>
     <ClInclude Include="MultiTexture.h">
       <Filter>03. Manager\TextureMgr\Texture\Multi</Filter>
     </ClInclude>
     <ClInclude Include="SingleTexture.h">
       <Filter>03. Manager\TextureMgr\Texture\Single</Filter>
     </ClInclude>
-    <ClInclude Include="TextureMgr.h">
-      <Filter>03. Manager\TextureMgr</Filter>
-    </ClInclude>
     <ClInclude Include="Texture.h">
       <Filter>03. Manager\TextureMgr\Texture</Filter>
     </ClInclude>
+    <ClInclude Include="Constant.h">
+      <Filter>헤더 파일\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Define.h">
+      <Filter>헤더 파일\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Enum.h">
+      <Filter>헤더 파일\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Macro.h">
+      <Filter>헤더 파일\Headers</Filter>
+    </ClInclude>
     <ClInclude Include="Struct.h">
       <Filter>헤더 파일\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjMgr.h">
+      <Filter>03. Manager\ObjMgr</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -128,17 +140,23 @@
     <ClCompile Include="SceneMgr.cpp">
       <Filter>03. Manager\SceneMgr</Filter>
     </ClCompile>
+    <ClCompile Include="Character.cpp">
+      <Filter>04. Character</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureMgr.cpp">
+      <Filter>03. Manager\TextureMgr</Filter>
+    </ClCompile>
     <ClCompile Include="MultiTexture.cpp">
       <Filter>03. Manager\TextureMgr\Texture\Multi</Filter>
     </ClCompile>
     <ClCompile Include="SingleTexture.cpp">
       <Filter>03. Manager\TextureMgr\Texture\Single</Filter>
     </ClCompile>
-    <ClCompile Include="TextureMgr.cpp">
-      <Filter>03. Manager\TextureMgr</Filter>
-    </ClCompile>
     <ClCompile Include="Texture.cpp">
       <Filter>03. Manager\TextureMgr\Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjMgr.cpp">
+      <Filter>03. Manager\ObjMgr</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
