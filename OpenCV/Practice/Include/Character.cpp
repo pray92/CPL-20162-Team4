@@ -46,7 +46,7 @@ void CCharacter::Render(void)
 	//크기
 	D3DXMATRIX matScale;
 	D3DXMatrixIdentity(&matScale);
-	D3DXMatrixTranslation(&matScale, 1.f, 1.f, 1.f);
+	D3DXMatrixScaling(&matScale, 1.f, 1.f, 1.f);
 	//위치
 	D3DXMATRIX matTrans;
 	D3DXMatrixIdentity(&matTrans);
