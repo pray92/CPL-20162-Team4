@@ -5,6 +5,7 @@
 
 int main()
 {
+	ImageCapture();
 	ImageExport();
 	MakeCharacter();
 	return 0;

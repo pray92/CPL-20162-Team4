@@ -34,6 +34,8 @@
 #include<new>
 
 using namespace std;
+using namespace cv;
 
+void ImageCapture();
 void MakeCharacter();
 void ImageExport();

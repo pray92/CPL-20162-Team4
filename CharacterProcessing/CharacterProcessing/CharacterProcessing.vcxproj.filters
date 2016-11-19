@@ -19,6 +19,9 @@
     <Filter Include="ImageExport">
       <UniqueIdentifier>{85b2eb96-8bc7-42cf-b093-60b1b8b09e37}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ImageCapture">
+      <UniqueIdentifier>{dc1c3ff4-a77b-4fd6-9604-c1261428d38a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -46,6 +49,9 @@
     </ClCompile>
     <ClCompile Include="ImageExport.cpp">
       <Filter>ImageExport</Filter>
+    </ClCompile>
+    <ClCompile Include="ImageCapture.cpp">
+      <Filter>ImageCapture</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
