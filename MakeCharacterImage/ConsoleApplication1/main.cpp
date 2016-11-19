@@ -15,8 +15,6 @@ cv::Mat img;
 cv::Mat img2;
 cv::Mat newImage;
 
-int point[4][2];
-int point_count = 0;
 int lupoint_x;
 int lupoint_y;
 
@@ -25,28 +23,6 @@ int rdpoint_y;
 
 int width;
 int hei;
-
-void on_mouse(int event, int x, int y, int flag, void*params) {
-	if (event == CV_EVENT_LBUTTONDOWN) {
-		if (point_count < 4) {
-			point[point_count][0] = x;
-			point[point_count++][1] = y;
-		}
-
-		if (point_count == 4) {
-			point_count++;
-
-			lupoint_x = point[0][0];
-			lupoint_y = point[2][1];
-
-			rdpoint_x = point[1][0];
-			rdpoint_y = point[3][1];
-
-			width = rdpoint_x - lupoint_x;
-			hei = rdpoint_y - lupoint_y;
-		}
-	}
-}
 
 
 int main(void) {
@@ -62,17 +38,7 @@ int main(void) {
 
 	GaussianBlur(gray, gray, cv::Size(7, 7), 3, 3);
 
-	cv::HoughCircles(gray, circles, cv::HOUGH_GRADIENT, 1, 10);
-
-	/*cv::setMouseCallback("image", on_mouse);
-
-	cv::imshow("image", img2);
-
-	while (1) {
-		char ch = cv::waitKey(0);
-		if (ch == 27)
-			break;
-	}*/
+	cv::HoughCircles(gray, circles, cv::HOUGH_GRADIENT, 1, 10);  //¿ø°ËÃâ 
 
 	DIR *dir = opendir("\images");
 	struct dirent *ent;
