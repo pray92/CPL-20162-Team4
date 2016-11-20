@@ -14,6 +14,7 @@ using namespace std;
 cv::Mat img;
 cv::Mat img2;
 cv::Mat newImage;
+cv::Mat height;
 
 int lupoint_x;
 int lupoint_y;
@@ -57,6 +58,7 @@ int main(void) {
 			//cv::imshow("name", gMatChangeImage);
 
 			img = cv::imread(name);
+			height = cv::imread("height\\height.bmp");
 
 			for (size_t e = 0; e < circles.size(); e++) {
 
@@ -68,23 +70,28 @@ int main(void) {
 				rdpoint_y = lupoint_y + 2 * face_radius;
 
 				cv::resize(img, img, cv::Size(2 * face_radius, 2 * face_radius), 0, 0, CV_INTER_NN);
+				cv::resize(height, height, cv::Size(2 * face_radius, 2 * face_radius), 0, 0, CV_INTER_NN);
 
 				//cv::imshow("aa", img);
 
 				int m = 0;
 				int k = 0;
 
-				
 				int d;
+				int height_avg;
 
 				for (int i = lupoint_x; i < rdpoint_x; i++, m++) {
 					k = 0;
 					for (int j = lupoint_y; j < rdpoint_y; j++, k++) {
-						d = sqrt(pow((int)(face_radius) - (i - lupoint_x), 2) + pow((int)(face_radius / 2) - (j - lupoint_y), 2));
+						d = sqrt(pow((int)(face_radius)-(i - lupoint_x), 2) + pow((int)(face_radius) - (j - lupoint_y), 2));
 						if (d < face_radius) {
-							gMatChangeImage.at<cv::Vec3b>(j, i)[0] = img2.at<cv::Vec3b>(j, i)[0] * (1.0f - (face_radius - d) * 0.01f) + img.at<cv::Vec3b>(k, m)[0] * (face_radius - d) * 0.01f;
-							gMatChangeImage.at<cv::Vec3b>(j, i)[1] = img2.at<cv::Vec3b>(j, i)[1] * (1.0f - (face_radius - d) * 0.01f) + img.at<cv::Vec3b>(k, m)[1] * (face_radius - d) * 0.01f;
-							gMatChangeImage.at<cv::Vec3b>(j, i)[2] = img2.at<cv::Vec3b>(j, i)[2] * (1.0f - (face_radius - d) * 0.01f) + img.at<cv::Vec3b>(k, m)[2] * (face_radius - d) * 0.01f;
+							height_avg = (height.at<cv::Vec3b>(k, m)[0] + height.at<cv::Vec3b>(k, m)[1] + height.at<cv::Vec3b>(k, m)[2]) / 3.f;
+							gMatChangeImage.at<cv::Vec3b>(j, i)[0] = img2.at<cv::Vec3b>(j, i)[0] * (1.0f - height_avg / 255.f) + img.at<cv::Vec3b>(k, m)[0] * height_avg / 255.f;
+							gMatChangeImage.at<cv::Vec3b>(j, i)[1] = img2.at<cv::Vec3b>(j, i)[1] * (1.0f - height_avg / 255.f) + img.at<cv::Vec3b>(k, m)[1] * height_avg / 255.f;
+							gMatChangeImage.at<cv::Vec3b>(j, i)[2] = img2.at<cv::Vec3b>(j, i)[2] * (1.0f - height_avg / 255.f) + img.at<cv::Vec3b>(k, m)[2] * height_avg / 255.f;
+							//gMatChangeImage.at<cv::Vec3b>(j, i)[0] = img2.at<cv::Vec3b>(j, i)[0] * (1.0f - (face_radius - d) * 0.01f) + img.at<cv::Vec3b>(k, m)[0] * (face_radius - d) * 0.01f;
+							//gMatChangeImage.at<cv::Vec3b>(j, i)[1] = img2.at<cv::Vec3b>(j, i)[1] * (1.0f - (face_radius - d) * 0.01f) + img.at<cv::Vec3b>(k, m)[1] * (face_radius - d) * 0.01f;
+							//gMatChangeImage.at<cv::Vec3b>(j, i)[2] = img2.at<cv::Vec3b>(j, i)[2] * (1.0f - (face_radius - d) * 0.01f) + img.at<cv::Vec3b>(k, m)[2] * (face_radius - d) * 0.01f;
 						}
 					}
 				}
