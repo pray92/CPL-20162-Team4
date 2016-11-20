@@ -83,7 +83,7 @@ int main(void) {
 				for (int i = lupoint_x; i < rdpoint_x; i++, m++) {
 					k = 0;
 					for (int j = lupoint_y; j < rdpoint_y; j++, k++) {
-						d = sqrt(pow((int)(face_radius)-(i - lupoint_x), 2) + pow((int)(face_radius)-(j - lupoint_y), 2));
+						d = sqrt(pow((int)(face_radius)-(i - lupoint_x), 2) + pow((int)(face_radius) - (j - lupoint_y), 2));
 						if (d < face_radius) {
 							height_avg = (height.at<cv::Vec3b>(k, m)[0] + height.at<cv::Vec3b>(k, m)[1] + height.at<cv::Vec3b>(k, m)[2]) / 3.f;
 							gMatChangeImage.at<cv::Vec3b>(j, i)[0] = img2.at<cv::Vec3b>(j, i)[0] * (1.0f - height_avg / 255.f) + img.at<cv::Vec3b>(k, m)[0] * height_avg / 255.f;
@@ -96,22 +96,9 @@ int main(void) {
 					}
 				}
 			}
-			cv::Mat gMatBGRA;
-			cv::cvtColor(gMatChangeImage, gMatBGRA, cv::COLOR_BGR2BGRA);
-
-			for (int i = 0; i < gMatBGRA.size().width; i++) {
-				for (int j = 0; j < gMatBGRA.size().height; j++) {
-					if (gMatBGRA.at<cv::Vec4b>(j, i)[0] == 255 && gMatBGRA.at<cv::Vec4b>(j, i)[1] == 255 && gMatBGRA.at<cv::Vec4b>(j, i)[2] == 255){
-						gMatBGRA.at<cv::Vec4b>(j, i)[3] = 0;
-					}
-				}
-			}
-
 			char filename[100] = "CharacterImage\\";
 			strcat(filename, ent->d_name);
-			filename[strlen(filename) - 2] = 'n';
-			filename[strlen(filename) - 3] = 'p';
-			cv::imwrite(filename, gMatBGRA);
+			cv::imwrite(filename, gMatChangeImage);
 		}
 	}
 	cv::waitKey(0);

@@ -10,8 +10,17 @@ HRESULT CCharacter::Initialize(void)
 {
 	if (!m_bTextCalled)
 	{
-		if (FAILED(GET_SINGLE(CTextureMgr)->InsertTexture(255, 255, 0, 255,
-			L"turtle.png", L"Turtle", TEXTTYPE_SINGLE)))
+		_finddatai64_t c_file;
+		intptr_t hFile;
+		char* path = "*.png";
+		hFile = _findfirsti64(path, &c_file);
+		int iCnt = 0;
+		do {
+			++iCnt;
+		} while (_findnexti64(hFile, &c_file) == 0);
+		_findclose(hFile);
+
+		if (FAILED(GET_SINGLE(CTextureMgr)->InsertTexture(255, 255, 255, 255, L"%dsaved.png", L"", TEXTTYPE_MULTI, L"Turtle", iCnt)))
 		{
 			MessageBox(NULL, L"거북이 사진 불러오기 실패", L"Message", MB_OK);
 			return E_FAIL;
@@ -78,7 +87,7 @@ SCENE CCharacter::Progress(void)
 
 void CCharacter::Render(void)
 {
-	const TEX_INFO* pTexInfo = GET_SINGLE(CTextureMgr)->GetTexture(L"Turtle");
+	const TEX_INFO* pTexInfo = GET_SINGLE(CTextureMgr)->GetTexture(L"", L"Turtle", m_iID);
 	if (pTexInfo == NULL)
 		return;
 
@@ -157,6 +166,10 @@ CCharacter::CCharacter()
 {
 }
 
+CCharacter::CCharacter(int _iID)
+	:m_iID(_iID)
+{
+}
 
 CCharacter::~CCharacter()
 {

@@ -16,20 +16,27 @@ HRESULT CSettingMenu::Initialize(void)
 		return E_FAIL;
 	}
 
-	m_dwTime = GetTickCount();
+	_finddatai64_t c_file;
+	intptr_t hFile;
+	char* path = "*.png";
+	hFile = _findfirsti64(path, &c_file);
+	int iCnt = 0;
+	do {
+		++iCnt;
+	} while (_findnexti64(hFile, &c_file) == 0);
+	_findclose(hFile);
+
+	for (auto i = 0; i < iCnt; ++i)
+	{
+		shared_ptr<CCharacter> character(new CCharacter(i));
+		GET_SINGLE(CObjMgr)->InsertObject(character);
+	}
 
 	return S_OK;
 }
 
 SCENE CSettingMenu::Progress(void)
 {
-	if (GetTickCount() > m_dwTime + 1000)
-	{
-		shared_ptr<CCharacter> character(new CCharacter);
-		GET_SINGLE(CObjMgr)->InsertObject(character);
-		m_dwTime = GetTickCount();
-	}
-
 	return GET_SINGLE(CObjMgr)->Progress();
 }
 

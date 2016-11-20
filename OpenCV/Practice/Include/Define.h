@@ -7,6 +7,8 @@
 #include <d3d9.h>
 #include <map>
 #include <vector>
+#include <stdio.h>
+#include <io.h>
 
 #include "Constant.h"
 #include "Enum.h"

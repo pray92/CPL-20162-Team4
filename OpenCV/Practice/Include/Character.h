@@ -4,6 +4,7 @@ class CCharacter
 {
 private:
 	static bool m_bTextCalled;
+	int			m_iID;
 private:
 	D3DXVECTOR3		m_vPos;
 	D3DXVECTOR3		m_vStartPos;
@@ -30,5 +31,6 @@ private:
 	float GetDMagnitude(const D3DXVECTOR3, const D3DXVECTOR3);		// Return length square between two points
 public:
 	CCharacter();
+	CCharacter(int _iID);
 	~CCharacter();
 };
