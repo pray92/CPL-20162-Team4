@@ -18,7 +18,7 @@ HRESULT CSettingMenu::Initialize(void)
 
 	_finddatai64_t c_file;
 	intptr_t hFile;
-	char* path = "*.png";
+	char* path = "./CharacterImage/*.png";
 	hFile = _findfirsti64(path, &c_file);
 	int iCnt = 0;
 	do {

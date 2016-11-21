@@ -12,7 +12,7 @@ HRESULT CCharacter::Initialize(void)
 	{
 		_finddatai64_t c_file;
 		intptr_t hFile;
-		char* path = "*.png";
+		char* path = "./CharacterImage/*.png";
 		hFile = _findfirsti64(path, &c_file);
 		int iCnt = 0;
 		do {
@@ -20,7 +20,7 @@ HRESULT CCharacter::Initialize(void)
 		} while (_findnexti64(hFile, &c_file) == 0);
 		_findclose(hFile);
 
-		if (FAILED(GET_SINGLE(CTextureMgr)->InsertTexture(255, 255, 255, 255, L"%dsaved.png", L"", TEXTTYPE_MULTI, L"Turtle", iCnt)))
+		if (FAILED(GET_SINGLE(CTextureMgr)->InsertTexture(255, 255, 255, 255, L"./CharacterImage/%dsaved.png", L"", TEXTTYPE_MULTI, L"Turtle", iCnt)))
 		{
 			MessageBox(NULL, L"거북이 사진 불러오기 실패", L"Message", MB_OK);
 			return E_FAIL;
