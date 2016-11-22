@@ -1,0 +1,17 @@
+﻿  main.cpp
+c:\opencv3\build\include\opencv2\core\mat.hpp(1965): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+c:\opencv3\build\include\opencv2\core\persistence.hpp : warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+c:\opencv3\build\include\opencv2\core\utility.hpp : warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+c:\opencv3\build\include\opencv2\core\utility.hpp : warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+c:\users\ykhigh\documents\github\cpl-20162-team4\makecharacterimage\consoleapplication1\main.cpp(44): warning C4129: 'i': 문자 이스케이프 시퀀스를 인식할 수 없습니다.
+c:\users\ykhigh\documents\github\cpl-20162-team4\makecharacterimage\consoleapplication1\main.cpp(86): warning C4244: '=': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\ykhigh\documents\github\cpl-20162-team4\makecharacterimage\consoleapplication1\main.cpp(88): warning C4244: '=': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\ykhigh\documents\github\cpl-20162-team4\makecharacterimage\consoleapplication1\main.cpp(89): warning C4244: '=': 'float'에서 'uchar'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\ykhigh\documents\github\cpl-20162-team4\makecharacterimage\consoleapplication1\main.cpp(90): warning C4244: '=': 'float'에서 'uchar'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\ykhigh\documents\github\cpl-20162-team4\makecharacterimage\consoleapplication1\main.cpp(91): warning C4244: '=': 'float'에서 'uchar'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\ykhigh\documents\github\cpl-20162-team4\makecharacterimage\consoleapplication1\main.cpp(53): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(90): note: 'strcat' 선언을 참조하십시오.
+c:\users\ykhigh\documents\github\cpl-20162-team4\makecharacterimage\consoleapplication1\main.cpp(110): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(90): note: 'strcat' 선언을 참조하십시오.
+  ConsoleApplication1.vcxproj -> C:\Users\ykhigh\Documents\GitHub\CPL-20162-Team4\MakeCharacterImage\x64\Debug\ConsoleApplication1.exe
+  ConsoleApplication1.vcxproj -> C:\Users\ykhigh\Documents\GitHub\CPL-20162-Team4\MakeCharacterImage\x64\Debug\ConsoleApplication1.pdb (Full PDB)
