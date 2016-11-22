@@ -20,12 +20,17 @@ HRESULT CSettingMenu::Initialize(void)
 	_finddatai64_t c_file;
 	intptr_t hFile;
 	char* path = "./CharacterImage/*.png";
-	hFile = _findfirsti64(path, &c_file);
 	int iCnt = 0;
-	do {
+	hFile = _findfirsti64(path, &c_file);
+	if(hFile == -1)
+		MessageBox(g_hWnd, L"캐릭터들이 없습니다.", L"Sysytem Error", MB_OK);
+	else 
+	{
 		++iCnt;
-	} while (_findnexti64(hFile, &c_file) == 0);
-	_findclose(hFile);
+		while (_findnexti64(hFile, &c_file) == 0)
+			++iCnt;
+		_findclose(hFile);
+	}
 
 	for (auto i = 0; i < iCnt; ++i)
 	{
